@@ -1,0 +1,30 @@
+"use strict"
+const input = document.querySelector("input");
+const numbers = document.querySelectorAll(".keys button");
+const clearBtn = document.querySelector("#clear-btn");
+const equalBtn = document.querySelector("#equal-btn");
+
+// clears input field
+const clearInput = () => {
+    input.value = "";
+}
+
+// appends clicked value to input field
+const showBtnValue = (e) => {
+    const btnValue = e.target.value;
+    input.value += btnValue;
+}
+
+// evaluates input value
+const evaluateInput = () => {
+    const inputValue = input.value;
+    input.value = eval(inputValue);
+}
+
+clearBtn.addEventListener("click", clearInput);
+
+numbers.forEach(number => {
+    number.addEventListener("click", showBtnValue);
+})
+
+equalBtn.addEventListener("click", evaluateInput);
